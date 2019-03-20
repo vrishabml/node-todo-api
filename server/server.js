@@ -8,6 +8,7 @@ var {User} = require('./models/user.js');
 var {ObjectID} = require('mongodb');
 
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -30,9 +31,6 @@ app.get('/todos', (req,res) => {
 res.status(400).send(e);
 })
 });
-app.listen(3000,()=>{
-  console.log('Started on port 3000');
-});
 
 app.get('/todos/:id', (req,res) => {
   var id = req.params.id;
@@ -45,6 +43,10 @@ app.get('/todos/:id', (req,res) => {
       return res.status(404).send('Object Not found');
     res.status(200).send({todo});
   }).catch((e) => { res.status(400).send(e); });
+});
+
+app.listen(port,()=>{
+  console.log(`Started on port ${port}`);
 });
 
 module.exports = {app};
