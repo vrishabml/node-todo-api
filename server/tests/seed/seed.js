@@ -11,7 +11,7 @@ email:'vrishabm0@gmail.com',
 password:'Qwerty99@',
 tokens:[{
   access:'auth',
-  token: jwt.sign({id:userOneId,access:'auth'},'abc123').toString()
+  token: jwt.sign({id:userOneId,access:'auth'}, process.env.JWT_SECRET).toString()
 }]
 },{
   _id:userTwoId,
@@ -19,7 +19,7 @@ tokens:[{
   password:'Asdfgh67',
   tokens:[{
     access:'auth',
-    token: jwt.sign({id:userTwoId,access:'auth'},'abc123').toString()
+    token: jwt.sign({id:userTwoId,access:'auth'},process.env.JWT_SECRET).toString()
   }]
 }];
 
